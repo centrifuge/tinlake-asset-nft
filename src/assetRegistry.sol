@@ -4,21 +4,25 @@ pragma solidity ^0.8.0;
 
 import "tinlake-auth/auth.sol";
 
-interface AssetNFT {
+interface IAssetNFT {
   function mintTo(address usr) external returns(uint);
 }
 
 contract AssetRegistry is Auth {
 
-  AssetNFT assets;
+  IAssetNFT assets;
+
+constructor() {
+    wards[msg.sender] = 1;
+}
 
 function depend(bytes32 contractName, address addr) external auth {
-    if (contractName == "assets") assets = AssetNFT(addr);
+    if (contractName == "assetNFT") assets = IAssetNFT(addr);
     else revert();
 }
 
 function mint(address _to) public auth {
-assets.mintTo(_to);
+    assets.mintTo(_to);
 }
   
 }
