@@ -12,8 +12,6 @@ contract AssetRegistry is Auth {
 
   IAssetNFT assets;
 
-  event Rely(address indexed usr);
-
 constructor() {
     wards[msg.sender] = 1;
     emit Rely(msg.sender);
