@@ -12,8 +12,11 @@ contract AssetRegistry is Auth {
 
   IAssetNFT assets;
 
+  event Rely(address indexed usr);
+
 constructor() {
     wards[msg.sender] = 1;
+    emit Rely(msg.sender);
 }
 
 function depend(bytes32 contractName, address addr) external auth {
@@ -23,6 +26,5 @@ function depend(bytes32 contractName, address addr) external auth {
 
 function mint(address _to) public auth {
     assets.mintTo(_to);
-}
-  
+} 
 }
