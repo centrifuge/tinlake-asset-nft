@@ -13,7 +13,7 @@ contract AssetRegistryTest is Test {
     function setUp() public {
         registry = new AssetRegistry();
         assets = new AssetNFT();
-        
+
         assert(assets.wards(address(this)) == 1);
         assert(registry.wards(address(this)) == 1);
     }
