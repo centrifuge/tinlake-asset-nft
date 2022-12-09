@@ -9,7 +9,7 @@ interface IAssetNFT {
 }
 
 contract AssetRegistry is Auth {
-    IAssetNFT assets;
+    IAssetNFT public assets;
 
     constructor() {
         wards[msg.sender] = 1;
