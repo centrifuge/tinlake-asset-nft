@@ -21,6 +21,6 @@ contract AssetRegistryTest is Test {
     function testMint() public {
         assets.rely(address(registry));
         registry.depend("assetNFT", address(assets));
-        registry.mint(address(this));
+        registry.mintTo(address(this));
     }
 }

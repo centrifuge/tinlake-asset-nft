@@ -21,7 +21,7 @@ contract AssetRegistry is Auth {
         else revert();
     }
 
-    function mint(address _to) public auth returns (uint256) {
+    function mintTo(address _to) public auth returns (uint256) {
         return assets.mintTo(_to);
     }
 }
