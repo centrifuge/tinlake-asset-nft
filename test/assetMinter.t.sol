@@ -35,4 +35,9 @@ contract AssetMinterTest is Test {
         vm.expectRevert("asset-nft-not-set");
         minter.mintTo(address(this));
     }
+
+    function testMintWithoutRelyAndDependFails() public {
+        vm.expectRevert("asset-nft-not-set");
+        minter.mintTo(address(this));
+    }
 }
