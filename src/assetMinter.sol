@@ -8,8 +8,8 @@ interface IAssetNFT {
     function mintTo(address usr) external returns (uint256);
 }
 
-contract AssetRegistry is Auth {
-    IAssetNFT public assets;
+contract AssetMinter is Auth {
+    IAssetNFT assets;
 
     constructor() {
         wards[msg.sender] = 1;
@@ -22,6 +22,7 @@ contract AssetRegistry is Auth {
     }
 
     function mintTo(address _to) public auth returns (uint256) {
+        require(address(assets) != address(0), "asset-nft-not-set");
         return assets.mintTo(_to);
     }
 }
